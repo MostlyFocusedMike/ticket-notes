@@ -13,9 +13,6 @@ function envNotSetup() {
     console.log(msg("GITHUB_PROFILE"))
     return true;
   }
-}
-
-function missingArgs() {
   if (process.argv.length <= 3) {
     console.log("You have to provide the pull request string and at least one file")
     return true;
@@ -23,9 +20,7 @@ function missingArgs() {
 }
 
 function makeEntry() {
-  if (envNotSetup() || missingArgs()) {
-    return false;
-  }
+  if (envNotSetup()) { return false; }
 
   const date = new Date();
   const pullRequestStr = process.argv[2];
