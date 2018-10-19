@@ -1,21 +1,13 @@
 function envNotSetup() {
-
-  const msg = (env) => `You're missing the ${env} variable`;
-  if (!process.env.BOARD) {
-    console.log(msg("BOARD"))
-    return true;
-  }
-  if (!process.env.PARENT_DIR) {
-    console.log(msg("PARENT_DIR"))
-    return true;
-  }
-  if (!process.env.GITHUB_PROFILE) {
-    console.log(msg("GITHUB_PROFILE"))
-    return true;
-  }
-  if (process.argv.length <= 3) {
-    console.log("You have to provide the pull request string and at least one file")
-    return true;
+  let msg = "";
+  const makeMsg = (env) => msg = `You're missing the ${env} variable`;
+  if (!process.env.BOARD) { makeMsg("BOARD") }
+  if (!process.env.PARENT_DIR) { makeMsg("PARENT_DIR") }
+  if (!process.env.GITHUB_PROFILE) { makeMsg("GITHUB_PROFILE") }
+  if (process.argv.length <= 3) { msg = "You have to provide the pull request string and at least one file" }
+  if (msg) {
+    console.log(msg)
+    return true
   }
 }
 
