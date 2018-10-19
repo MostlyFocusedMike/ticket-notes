@@ -10,16 +10,14 @@ const repo = files[0].match(process.env.DIR + "/([^\/]+)/")[1];
 const date = new Date();
 
 
-const entry = `
+console.log(`
 ${pullRequestTicket} ${process.env.BOARD}/${pullRequestTicket}
 Name: ${pullRequestName}
 Date: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear() - 2000}
 Description:
 Fix: 
 Files:
-${repo.toUpperCase()}
-
-Commits: https://github.com${process.env.COMPANY_REPO}/${repo}/pull/${pullRequestNumber}/commits
-`
-console.log(typeof date.getFullYear() )
-console.log(entry)
+\t${repo.toUpperCase()}
+\t${files.map(file => file.split(repo)[1]).join("\n\t")}
+Commits: https://github.com/${process.env.GITHUB_PROFILE}/${repo}/pull/${pullRequestNumber}/commits
+`)
