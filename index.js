@@ -1,14 +1,16 @@
 function envNotSetup() {
+
+  const msg = (env) => `You're missing the ${env} variable`;
   if (!process.env.BOARD) {
-    console.log("You're missing the BOARD environment variable")
+    console.log(msg("BOARD"))
     return true;
   }
   if (!process.env.PARENT_DIR) {
-    console.log("You're missing the PARENT_DIR environment variable")
+    console.log(msg("PARENT_DIR"))
     return true;
   }
   if (!process.env.GITHUB_PROFILE) {
-    console.log("You're missing the GITHUB_PROFILE environment variable")
+    console.log(msg("GITHUB_PROFILE"))
     return true;
   }
 }
@@ -17,14 +19,14 @@ function missingArgs() {
   if (process.argv.length <= 3) {
     console.log("You have to provide the pull request string and at least one file")
     return true;
-  } 
+  }
 }
 
 function makeEntry() {
   if (envNotSetup() || missingArgs()) {
-    process.exit();
+    return false;
   }
- 
+
   const date = new Date();
   const pullRequestStr = process.argv[2];
   const files = process.argv.slice(3);
@@ -39,12 +41,13 @@ ${pullRequestTicket} https://${process.env.BOARD}/${pullRequestTicket}
 Name: ${pullRequestName}
 Date: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear() - 2000}
 Description:
-Fix: 
+Fix:
 Files:
 \t${PARENT_DIR.toUpperCase()}
 \t${files.map(file => file.split(PARENT_DIR)[1]).join("\n\t")}
 Commits: https://github.com/${process.env.GITHUB_PROFILE}/${PARENT_DIR}/pull/${pullRequestNumber}/commits
 `)
+  return true; // since the log will not return anything
 }
 
 makeEntry()

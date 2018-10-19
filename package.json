@@ -4,12 +4,16 @@
   "description": "Easily ticket notes",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:one": "jest -t 'fail if there are not enough args'"
   },
   "bin": {
     "entry": "./bin/entry.js"
   },
   "preferGlobal": true,
   "author": "Mike Cronin",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
