@@ -37,6 +37,4 @@ Commits: https://github.com/${process.env.GITHUB_PROFILE}/${REPO}/pull/${pullReq
   return true; // since the log will not return anything
 }
 
-makeEntry()
-
 exports.makeEntry = makeEntry
