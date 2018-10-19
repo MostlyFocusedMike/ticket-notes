@@ -1,20 +1,27 @@
 function envNotSetup() {
   if (!process.env.BOARD) {
-    console.log("You're missing BOARD environment variable")
+    console.log("You're missing the BOARD environment variable")
     return true;
   }
   if (!process.env.PARENT_DIR) {
-    console.log("You're missing PARENT_DIR environment variable")
+    console.log("You're missing the PARENT_DIR environment variable")
     return true;
   }
   if (!process.env.GITHUB_PROFILE) {
-    console.log("You're missing GITHUB_PROFILE environment variable")
+    console.log("You're missing the GITHUB_PROFILE environment variable")
     return true;
   }
 }
 
+function missingArgs() {
+  if (process.argv.length <= 3) {
+    console.log("You have to provide the pull request string and at least one file")
+    return true;
+  } 
+}
+
 function makeEntry() {
-  if (envNotSetup()) {
+  if (envNotSetup() || missingArgs()) {
     process.exit();
   }
  

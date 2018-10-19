@@ -24,6 +24,28 @@ describe('Environment Variables', () => {
     entry.makeEntry()
     expect(exitMock).toHaveBeenCalled();
     global.process = realProcess;
-    // process.env.BOARD = "kanban.com"
+    process.env.BOARD = "kanban.com"
+  });
+  test('fail if there is no GITHUB_PROFILE env variable', () => {
+    process.env.GITHUB_PROFILE = ""
+    const realProcess = process;
+    const exitMock = jest.fn();
+    global.process = { ...realProcess, exit: exitMock };
+
+    entry.makeEntry()
+    expect(exitMock).toHaveBeenCalled();
+    global.process = realProcess;
+    process.env.GITHUB_PROFILE = "company-name"
+  });
+  test('fail if there is no PARENT_DIR env variable', () => {
+    process.env.PARENT_DIR = ""
+    const realProcess = process;
+    const exitMock = jest.fn();
+    global.process = { ...realProcess, exit: exitMock };
+
+    entry.makeEntry()
+    expect(exitMock).toHaveBeenCalled();
+    global.process = realProcess;
+    process.env.PARENT_DIR = "holder"
   });
 });
