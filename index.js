@@ -1,4 +1,23 @@
+function envNotSetup() {
+  if (!process.env.BOARD) {
+    console.log("You're missing BOARD environment variable")
+    return true;
+  }
+  if (!process.env.PARENT_DIR) {
+    console.log("You're missing PARENT_DIR environment variable")
+    return true;
+  }
+  if (!process.env.GITHUB_PROFILE) {
+    console.log("You're missing GITHUB_PROFILE environment variable")
+    return true;
+  }
+}
+
 function makeEntry() {
+  if (envNotSetup()) {
+    process.exit();
+  }
+ 
   const date = new Date();
   const pullRequestStr = process.argv[2];
   const files = process.argv.slice(3);
