@@ -6,9 +6,6 @@ const pullRequestTicket = pullRequestStr.match(/^\[(.+)\]/)[1]
 const pullRequestName = pullRequestStr.match(/\] (.+)\#/)[1]
 const pullRequestNumber = pullRequestStr.match(/\#(\d+)/)[1]
 
-const DIR = process.env.DIR
+const repo = files[0].match(process.env.DIR + "/([^\/]+)/")[1]
 
-console.log(DIR)
-console.log(pullRequestTicket)
-console.log(pullRequestName)
-console.log(pullRequestNumber)
+console.log(repo)
