@@ -1,13 +1,13 @@
 {
-  "name": "ticket-maker",
+  "name": "ticket-notes",
   "version": "1.0.0",
-  "description": "Make ticket note entries with ease",
+  "description": "Easily ticket notes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "go": "./bin/demo-global.js"
+    "entry": "./bin/entry.js"
   },
   "preferGlobal": true,
   "author": "Mike Cronin",
