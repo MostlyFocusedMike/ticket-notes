@@ -1,5 +1,5 @@
-# Ticket Notes 
-A simple NPM pacakge to help format your notes 
+# ticket-notes 
+A simple NPM package to template your notes 
 
 ## How to use 
 Just use the command "entry" with the GitHub pull request title, followed by any files you used in the ticket.
@@ -28,7 +28,7 @@ You have to globally install using
 
 
 ## Environment Variables
-Ticket-notes expects several environment variables to be set, and will throw an error if any are missing: 
+ticket-notes expects several environment variables to be set, and will throw an error if any are missing: 
  - #### PARENT_DIR 
  In order to grab your repo names, ticket-notes assumes there's a parent project folder. If your repo is in ~/Desktop/my-projects/my-repo, then PARENT_DIR=my-project (no leading/trailing slashes)
  - #### BOARD
@@ -36,7 +36,7 @@ Ticket-notes expects several environment variables to be set, and will throw an 
  - #### GITHUB_PROFILE
  This is just whatever your GitHub profile name is, so mine is GITHUB_PROFILE=mostlyfocusedmike
  
-## PR String format
+## PR Title format
 The string must follow this format:    
 "[ticket-number] ticket name #pull-request-number"     
 Luckily, the PR number is automatically included by github, so if you name your PR after your ticket, this is just a simple cut and copy.
